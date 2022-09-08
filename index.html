@@ -30,7 +30,7 @@
             </div>
             
             <div class="sendBar d-flex p-3">
-                <textarea style="background-color: #2a3942; color: white;" id = "message" class="form-control" placeholder="Your Message Here"></textarea>
+                <textarea style="background-color: #2a3942; color: white;" id = "message" class="form-control" placeholder="Mensagem"></textarea>
                 <button id="send" class="btn-link" style="color: #9CA9AF;">
                     <span style="font-size: 34px;" class="material-symbols-outlined">
                         send
@@ -87,7 +87,7 @@
         }
 
         function getMessages(){
-        $.get('http://localhost:3000/messages', (data) => {
+        $.get('/messages', (data) => {
             data.forEach(addMessages);
             var objDiv = document.getElementById("messages");
             objDiv.scrollTop = objDiv.scrollHeight;
@@ -95,8 +95,7 @@
         }
 
         function sendMessage(message){
-            
-            $.post('http://localhost:3000/messages', message)
+            $.post('/messages', message)
         }
 
         let socket = io();
