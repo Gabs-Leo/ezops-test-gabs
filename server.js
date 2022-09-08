@@ -11,7 +11,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 var Message = mongoose.model('Message',{
   name : String,
-  message : String
+  message : String,
+  color: String
 })
 
 var dbUrl = 'mongodb+srv://gabs:pass@ezops-test-gabs.n85lhdo.mongodb.net/?retryWrites=true&w=majority'
@@ -34,7 +35,6 @@ app.get('/messages/:user', (req, res) => {
 app.post('/messages', async (req, res) => {
   try{
     var message = new Message(req.body);
-
     var savedMessage = await message.save()
       console.log('saved');
 
