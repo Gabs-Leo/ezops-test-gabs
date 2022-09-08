@@ -49,6 +49,7 @@ body {
 .message p {
     color: white;
     line-break: normal;
+    word-break: break-all;
 }
 .sendBar{
     height: 10vh;
