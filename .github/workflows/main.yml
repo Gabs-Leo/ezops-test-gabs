@@ -88,6 +88,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             sudo su
-            docker kill $(docker ps -q)
-            docker pull gabsleo/test:1.0
-            docker run -d -p 3000:3000 gabsleo/test:1.0
+            sudo docker kill $(docker ps -q)
+            sudo docker pull gabsleo/test:1.0
+            sudo docker run -d -p 3000:3000 gabsleo/test:1.0
