@@ -64,12 +64,12 @@ jobs:
             context: ./
             file: ./Dockerfile
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/gabsleo/test:1.0
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/test:1.0
           
         - name: Run the image in a container
           uses: addnab/docker-run-action@v3
           with:
-            image: ${{ secrets.DOCKERHUB_USERNAME }}/gabsleo/test:latest
+            image: ${{ secrets.DOCKERHUB_USERNAME }}/test:1.0
             run: |
               echo "runing the docker image"
               echo "Testing the nodejs  app endpoints"
