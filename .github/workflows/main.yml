@@ -74,3 +74,18 @@ jobs:
               echo "runing the docker image"
               echo "Testing the nodejs  app endpoints"
               echo ${{ steps.docker_build.outputs.digest }}
+  aws_EC2_Deploy:
+      runs-on: ubuntu-latest
+      name: remote ssh AWS EC2
+      steps:
+      - name: executing remote ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.AWS_USERNAME }}
+          password: ${{ secrets.AWS_PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: 
+            docker kill $(docker ps -q)
+            docker pull gabsleo/test:1.0
+            docker run -d -p 3000:3000 gabsleo/test:1.0
