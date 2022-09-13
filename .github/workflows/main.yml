@@ -87,6 +87,7 @@ jobs:
           password: ${{ secrets.AWS_PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
+            sudo su
             docker kill $(docker ps -q)
             docker pull gabsleo/test:1.0
             docker run -d -p 3000:3000 gabsleo/test:1.0
